@@ -210,3 +210,11 @@ function starRow(value, { interactive = false, dishId = null } = {}) {
     })
     .join('');
 }
+
+// Keep the filter bar below the sticky header, including wrapped/mobile navigation.
+const stickyHeader = document.querySelector(".site-header");
+if (stickyHeader && "ResizeObserver" in window) {
+  new ResizeObserver(() => {
+    document.documentElement.style.setProperty("--header-height", `${stickyHeader.getBoundingClientRect().height}px`);
+  }).observe(stickyHeader);
+}
