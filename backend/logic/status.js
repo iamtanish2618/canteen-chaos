@@ -3,13 +3,15 @@
 // and the little kitchen simulation that moves orders along on its own.
 
 const FLOW = ['placed', 'accepted', 'preparing', 'ready', 'picked'];
-const TERMINAL = ['cancelled', 'refunded'];
+// Terminal for the kitchen queue; collection/refund may still follow.
+const TERMINAL = ['ready', 'picked', 'cancelled', 'refunded'];
+const IMMUTABLE = ['cancelled', 'refunded'];
 
 // how long each stage should take before the kitchen moves it on (seconds)
 const AUTO_AFTER = { placed: 20, accepted: 25, preparing: 60 };
 
 function allowedNext(status) {
-  if (TERMINAL.includes(status)) return [];
+  if (IMMUTABLE.includes(status)) return [];
 
   const i = FLOW.indexOf(status);
   if (i === -1) return [];
@@ -30,7 +32,7 @@ function canTransition(from, to) {
   if (!FLOW.includes(to) && !['cancelled', 'refunded'].includes(to)) {
     return { ok: false, reason: `Unknown status "${to}"` };
   }
-  if (TERMINAL.includes(from) && from !== 'picked') {
+  if (IMMUTABLE.includes(from)) {
     return { ok: false, reason: `A ${from} order cannot change` };
   }
   if (!allowedNext(from).includes(to)) {
