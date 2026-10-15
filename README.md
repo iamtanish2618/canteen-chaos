@@ -128,3 +128,9 @@ it costs you rather than earns you.
 
 Stuck for more than an hour on one thing? Ask in the group. Asking is
 not a penalty — it is what you would do on a real team.
+
+## Debugging submission
+
+All ten reported issues are addressed; see [LOG.md](LOG.md) for measured before/after observations, two extra defects, and limitations. AI assistance was used with the candidate's stated permission from the society.
+
+Run regression checks with `cd backend && npm ci && npm test`. Tests isolate their fixtures from the application's JSON files. This remains a local debugging exercise; the inherited staff endpoints are unauthenticated and should not be exposed as a production service.
