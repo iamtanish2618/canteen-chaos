@@ -1,0 +1,32 @@
+/* ==================================================================
+   v3 additions: suggestions, picks, dish detail, checkout, ratings,
+   staff extras.
+   ================================================================== */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  background: var(--orange);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 0 0 8px 0;
+  z-index: 300;
+}
+
+.skip-link:focus {
+  left: 0;
+  top: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+.small {
+  font-size: 12px;
+}
+.slot-bar.rush {
+  background: var(--amber);
+  color: #2b2118;
+}

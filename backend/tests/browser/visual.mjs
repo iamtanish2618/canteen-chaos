@@ -4,7 +4,7 @@ import { createRequire } from "node:module";
 process.env.AUTO_COOK = "false";
 process.env.LATENCY_MS = "0";
 const require = createRequire(import.meta.url);
-const { app } = require("../server.js");
+const { app } = require("../../server.js");
 const server = app.listen(0, "127.0.0.1");
 await new Promise((resolve) => server.once("listening", resolve));
 let browser;

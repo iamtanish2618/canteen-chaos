@@ -4,7 +4,7 @@
 
 **BYTE Task 1 submission:** [iamtanish2618/canteen-chaos](https://github.com/iamtanish2618/canteen-chaos).
 
-Start with [LOG.md](LOG.md): all ten reported bugs have reproduction steps, root causes, fixes and checks, plus two extra defects and an honest limitations note. Seven automated regression groups cover inventory, simultaneous orders, cancellation, coupons, pagination, sorting and order transitions. GitHub Actions runs them, plus the browser checks, on every push and pull request.
+Start with [LOG.md](LOG.md): all ten reported bugs have reproduction steps, root causes, fixes and checks, plus two extra defects and an honest limitations note. Eight automated regression groups cover inventory, simultaneous orders, cancellation, coupons, pagination, sorting and order transitions. GitHub Actions runs them, plus the browser checks, on every push and pull request.
 
 ```sh
 cd backend
@@ -14,6 +14,22 @@ npm start
 ```
 
 Open `http://localhost:3000`. The tests isolate their fixtures and do not alter application data. This is the focused Task 1 debugging fork; the [Task 2 repository](https://github.com/iamtanish2618/still-gym) and [live gym app](https://still-gym.vercel.app) are submitted separately.
+
+
+## Code and test organization
+
+`backend/logic/` holds domain rules and `backend/routes/` holds HTTP routes. The active frontend is split into `frontend/js/` scripts: `menu-render.js` contains dish/card rendering and `menu.js` coordinates loading and interactions. The original plain-script load order is preserved. `frontend/style.css` now imports small feature styles in their original cascade order.
+
+Node tests live in `backend/tests/unit/`; browser regressions live in `backend/tests/browser/`. A structural check keeps source/test modules under 350 lines, including the inherited smoke tools. Run all checks with:
+
+```sh
+cd backend
+npm ci
+npx playwright install chromium
+npm run test:all
+```
+
+With installed Chrome, use `CHROME_CHANNEL=chrome npm run test:all` and omit the browser download. These checks cover the reported bugs and documented extra fixes; they do not certify every inherited feature or production security. See the honest scope note in `LOG.md`.
 
 The original project/task instructions follow.
 

@@ -126,6 +126,13 @@ This inherited app has no real authentication: member headers are caller-control
 
 Reran `npm ci && npm test` from a fresh checkout of this public fork: all **7 test groups passed**. The HTTP regression again accepted only one of two concurrent requests for the final plate, kept inventory non-negative, preserved idempotent retries and restored stock/coupon use once on cancellation. The tests replace the store with isolated fixtures; application JSON data was unchanged. Added GitHub Actions to repeat these checks on pushes and pull requests. Original before/after reproduction observations above remain historical; the fresh browser checks below are a separate verification.
 
-Browser follow-up on 16 October: verified all six search suggestions receive pointer hits, dark text uses the intended light ink, no horizontal overflow at 360/390/600/800/1280px, a tablet favourite click changes its state, and mobile filters remain aligned below the header after scrolling. No browser exceptions occurred. Added `backend/browser-tests/visual.mjs` and a CI browser step so these checks are reproducible. No application JSON data was modified.
+Browser follow-up on 16 October: verified all six search suggestions receive pointer hits, dark text uses the intended light ink, no horizontal overflow at 360/390/600/800/1280px, a tablet favourite click changes its state, and mobile filters remain aligned below the header after scrolling. No browser exceptions occurred. Added `backend/tests/browser/visual.mjs` and a CI browser step so these checks are reproducible. No application JSON data was modified.
 
 The first new CI browser run caught a test-timing issue: debounced search and automatic pagination replaced the card during a manual scroll-to assertion. The browser check now waits for the cleared-search response/render and uses a retrying pointer action before hit-testing. The application rules were unchanged; this corrects the test's synchronization.
+
+
+## Modular cleanup and repeatable verification — 16 October 2026
+
+Split the large stylesheet into feature files while preserving cascade order. Extracted menu card/rendering helpers into `frontend/js/menu-render.js`, keeping the upstream plain-script architecture and load order. Moved rule/HTTP tests into `backend/tests/unit/` and the browser suite into `backend/tests/browser/`; assertions remain visible in the tests. Added a 350-line module-size check and `npm run test:all`.
+
+The original debugging fixes, reproduction records and upstream commit history are retained. The follow-up is a structural refactor; it does not claim to fix the remaining authentication or multi-file transaction limitations above. Verification includes eight Node test groups and the suggestion-hit, dark-theme, responsive-layout, tablet-favourite and mobile-sticky browser checks. No application JSON dataset was changed.

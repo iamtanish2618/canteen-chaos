@@ -1,0 +1,60 @@
+/* ------------------------------------------------- status/skeleton */
+
+.status {
+  padding: 28px 20px;
+  text-align: center;
+  color: var(--muted);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+}
+
+.status-title {
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 4px;
+}
+.status-sub {
+  margin: 0 0 12px;
+  font-size: 14px;
+}
+
+.skeleton {
+  pointer-events: none;
+}
+.sk-img {
+  height: 150px;
+  background: var(--line);
+}
+
+.sk-line {
+  height: 11px;
+  background: var(--line);
+  border-radius: 6px;
+  margin: 8px 0;
+}
+
+.w70 {
+  width: 70%;
+}
+.w40 {
+  width: 40%;
+}
+.w30 {
+  width: 30%;
+}
+
+.skeleton .sk-img,
+.sk-line {
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}

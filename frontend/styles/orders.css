@@ -1,0 +1,78 @@
+/* ---------------------------------------------------------- orders */
+
+.orders-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  padding-bottom: 40px;
+}
+
+.order-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px;
+  box-shadow: var(--shadow);
+}
+
+.order-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order-token {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.order-items {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 8px 0;
+}
+.order-bottom {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--muted);
+}
+.order-total {
+  font-weight: 700;
+  color: var(--ink);
+}
+.order-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.pill {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--line);
+  color: var(--ink);
+  text-transform: capitalize;
+}
+
+.pill-placed {
+  background: #e7f0ff;
+  color: #1864ab;
+}
+.pill-preparing {
+  background: #fff3bf;
+  color: #a07200;
+}
+.pill-ready {
+  background: #d3f9d8;
+  color: #2b8a3e;
+}
+.pill-picked {
+  background: var(--line);
+  color: var(--muted);
+}
+.pill-cancelled {
+  background: #ffe3e3;
+  color: #c92a2a;
+}

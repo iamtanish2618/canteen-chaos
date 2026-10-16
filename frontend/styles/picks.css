@@ -1,0 +1,65 @@
+/* ----------------------------------------------------------- picks */
+
+.picks {
+  margin-top: 18px;
+}
+.picks-title {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.picks-strip {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.pick-chip {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  color: var(--ink);
+  text-align: left;
+}
+
+.pick-chip:hover {
+  border-color: var(--orange);
+}
+.pick-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+.pick-price {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.name-btn {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.name-btn:hover {
+  color: var(--orange);
+}
+
+#menu {
+  position: relative;
+  z-index: 2;
+}
+
+#scrollSentinel {
+  height: 1px;
+}

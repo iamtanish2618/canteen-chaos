@@ -1,0 +1,100 @@
+/* CANTEEN-CHAOS-DEBUG-V3 */
+
+/* ==================================================================
+   Hostel Canteen - style.css
+   Plain CSS, no framework. Light and dark themes via data-theme.
+   ================================================================== */
+
+:root {
+  --orange: #e8590c;
+  --orange-dark: #c94a08;
+  --orange-soft: #fff1e6;
+  --bg: #fffaf4;
+  --card: #ffffff;
+  --ink: #2b2118;
+  --muted: #7a6a5c;
+  --line: #ecdfd2;
+  --green: #2f9e44;
+  --red: #c92a2a;
+  --amber: #e8a30c;
+  --blue: #1971c2;
+  --radius: 12px;
+  --shadow: 0 2px 8px rgba(70, 45, 20, 0.08);
+  --shadow-lg: 0 12px 40px rgba(70, 45, 20, 0.22);
+}
+
+html[data-theme="dark"] {
+  --orange: #ff7a2f;
+  --orange-dark: #e8590c;
+  --orange-soft: #2a1d14;
+  --bg: #16110d;
+  --card: #201913;
+  --ink: #f2e8df;
+  --muted: #a3907f;
+  --line: #34291f;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.55);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* a class with display:flex would otherwise beat the hidden attribute */
+[hidden] {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+.page-title {
+  font-size: 22px;
+  margin: 22px 0 14px;
+}
+.sub-title {
+  font-size: 18px;
+  margin: 28px 0 12px;
+}
+
+.list-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.result-count {
+  color: var(--muted);
+  font-size: 13px;
+}
+.muted {
+  color: var(--muted);
+}
+.mono {
+  font-variant-numeric: tabular-nums;
+}

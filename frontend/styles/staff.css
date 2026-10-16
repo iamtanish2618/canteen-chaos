@@ -1,0 +1,128 @@
+/* ----------------------------------------------------------- staff */
+
+.live-toggle {
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.stat-tile {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-value {
+  font-size: 22px;
+  font-weight: 700;
+}
+.stat-label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--card);
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 720px;
+}
+
+.orders-table th {
+  text-align: left;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--muted);
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  background: var(--card);
+}
+
+.orders-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.items-cell {
+  font-size: 13px;
+  color: var(--muted);
+}
+.empty-row {
+  text-align: center;
+  color: var(--muted);
+  padding: 30px;
+}
+
+.mini-btn {
+  background: var(--orange);
+  color: #fff;
+  border: 0;
+  border-radius: 7px;
+  padding: 6px 11px;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.mini-btn:disabled {
+  background: var(--muted);
+}
+
+.stock-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding-bottom: 40px;
+}
+
+.stock-row {
+  display: grid;
+  grid-template-columns: 1fr auto 70px auto;
+  gap: 10px;
+  align-items: center;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+.stock-row.out {
+  border-color: var(--red);
+}
+.stock-slot {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.stock-input {
+  width: 100%;
+  padding: 5px 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--ink);
+}
