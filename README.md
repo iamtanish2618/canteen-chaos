@@ -1,8 +1,10 @@
 # Canteen Chaos
 
+[![Verify debugging fixes](https://github.com/iamtanish2618/canteen-chaos/actions/workflows/verify.yml/badge.svg)](https://github.com/iamtanish2618/canteen-chaos/actions/workflows/verify.yml)
+
 **BYTE Task 1 submission:** [iamtanish2618/canteen-chaos](https://github.com/iamtanish2618/canteen-chaos).
 
-Start with [LOG.md](LOG.md): all ten reported bugs have reproduction steps, root causes, fixes and checks, plus two extra defects and an honest limitations note. Seven automated regression groups cover inventory, simultaneous orders, cancellation, coupons, pagination, sorting and order transitions. GitHub Actions runs them on every push and pull request.
+Start with [LOG.md](LOG.md): all ten reported bugs have reproduction steps, root causes, fixes and checks, plus two extra defects and an honest limitations note. Seven automated regression groups cover inventory, simultaneous orders, cancellation, coupons, pagination, sorting and order transitions. GitHub Actions runs them, plus the browser checks, on every push and pull request.
 
 ```sh
 cd backend
@@ -149,3 +151,14 @@ not a penalty — it is what you would do on a real team.
 All ten reported issues are addressed; see [LOG.md](LOG.md) for measured before/after observations, two extra defects, and limitations. AI assistance was used with the candidate's stated permission from the society.
 
 Run regression checks with `cd backend && npm ci && npm test`. Tests isolate their fixtures from the application's JSON files. This remains a local debugging exercise; the inherited staff endpoints are unauthenticated and should not be exposed as a production service.
+
+## Browser regressions
+
+```sh
+cd backend
+npm ci
+npx playwright install chromium
+npm run test:browser
+```
+
+If Chrome is already installed, use `CHROME_CHANNEL=chrome npm run test:browser` instead of downloading Chromium. The script starts its own local server on a free port, does not run the automatic kitchen, and checks suggestion hit targets, dark-theme text, 360/390/600/800/1280px overflow, tablet favourite clicks and mobile sticky filters. It places no orders and does not change the application's JSON data. The backend's existing tests cover stock, coupons, pagination, sorting and order transitions.
