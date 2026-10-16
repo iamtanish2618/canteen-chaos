@@ -38,7 +38,23 @@ try {
         }),
       );
     assert.ok(suggestions.length > 0 && suggestions.every(Boolean));
+    const resetResponse = page.waitForResponse((response) => {
+      const url = new URL(response.url());
+      return (
+        url.pathname === "/api/menu" &&
+        !url.searchParams.get("q") &&
+        url.searchParams.get("page") === "1"
+      );
+    });
     await page.locator("#searchInput").fill("");
+    const reset = await (await resetResponse).json();
+    await page.waitForFunction(
+      (total) =>
+        document
+          .querySelector("#resultCount")
+          ?.textContent.includes(`total ${total}`),
+      reset.total,
+    );
     await page.locator("#themeBtn").click();
     const theme = await page
       .locator(".dish-body")
@@ -61,7 +77,9 @@ try {
     }
     await page.setViewportSize({ width: 800, height: 900 });
     const favorite = page.locator(".fav-btn").first();
-    await favorite.scrollIntoViewIfNeeded();
+    // Pagination can replace the cards while the viewport changes. A normal
+    // pointer action retries a detached element until the current card is stable.
+    await favorite.hover();
     const hit = await favorite.evaluate((el) => {
       const b = el.getBoundingClientRect();
       const found = document.elementFromPoint(
@@ -79,13 +97,11 @@ try {
     await page.mouse.wheel(0, 600);
     await page.waitForFunction(() => window.scrollY > 300);
     await page.locator(".filters").waitFor();
-    const sticky = await page
-      .locator(".filters")
-      .evaluate((el) => ({
-        top: el.getBoundingClientRect().top,
-        header: document.querySelector(".site-header").getBoundingClientRect()
-          .bottom,
-      }));
+    const sticky = await page.locator(".filters").evaluate((el) => ({
+      top: el.getBoundingClientRect().top,
+      header: document.querySelector(".site-header").getBoundingClientRect()
+        .bottom,
+    }));
     assert.ok(Math.abs(sticky.top - sticky.header) < 3, JSON.stringify(sticky));
     assert.deepEqual(errors, []);
     console.log(
