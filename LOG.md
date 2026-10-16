@@ -121,3 +121,7 @@ This inherited app has no real authentication: member headers are caller-control
 ## Run verification
 
 `cd backend && npm ci && npm test` runs isolated rule and HTTP tests without touching real JSON data. Browser verification is documented above; it is not part of the Node test suite. Original opening hours still apply for manual testing. Start with `AUTO_COOK=false npm start` to keep order states predictable.
+
+## Submission verification — 16 October 2026
+
+Reran `npm ci && npm test` from a fresh checkout of this public fork: all **7 test groups passed**. The HTTP regression again accepted only one of two concurrent requests for the final plate, kept inventory non-negative, preserved idempotent retries and restored stock/coupon use once on cancellation. The tests replace the store with isolated fixtures; application JSON data was unchanged. Added GitHub Actions to repeat these checks on pushes and pull requests. Original reproduction observations above remain historical; this rerun is not a claim that the browser observations were repeated today.

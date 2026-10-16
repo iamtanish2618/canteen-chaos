@@ -1,5 +1,20 @@
 # Canteen Chaos
 
+**BYTE Task 1 submission:** [iamtanish2618/canteen-chaos](https://github.com/iamtanish2618/canteen-chaos).
+
+Start with [LOG.md](LOG.md): all ten reported bugs have reproduction steps, root causes, fixes and checks, plus two extra defects and an honest limitations note. Seven automated regression groups cover inventory, simultaneous orders, cancellation, coupons, pagination, sorting and order transitions. GitHub Actions runs them on every push and pull request.
+
+```sh
+cd backend
+npm ci
+npm test
+npm start
+```
+
+Open `http://localhost:3000`. The tests isolate their fixtures and do not alter application data. This is the focused Task 1 debugging fork; the [Task 2 repository](https://github.com/iamtanish2618/still-gym) and [live gym app](https://still-gym.vercel.app) are submitted separately.
+
+The original project/task instructions follow.
+
 The hostel canteen's ordering site. Students browse the menu, add
 dishes to a cart, apply coupons, pick a collection time and place an
 order. Staff watch the queue on a counter dashboard and move orders
@@ -32,7 +47,7 @@ TZ=Pacific/Auckland npm start
 Other settings, all optional:
 
 | Variable | Default | What it does |
-||||
+| --- | --- | --- |
 | `LATENCY_MS` | 250 | Delay added to every API call. Set `0` for instant responses. |
 | `AUTO_COOK` | true | Orders move along by themselves. |
 | `ORDER_RATE_MAX` | 40 | Orders per minute before you get rate limited. |
